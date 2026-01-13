@@ -1,189 +1,182 @@
 <!doctype html>
 <html lang="de">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Startseite</title>
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Links</title>
   <style>
-    :root {
-      --bg0: #070a10;
-      --bg1: #0b1020;
-      --card: rgba(10,14,28,.6);
-      --border: rgba(255,255,255,.1);
-      --text: #eaf0ff;
-      --muted: #9fb0d6;
-
-      --accent1: #7c5cff;
-      --accent2: #23d5ff;
-      --accent3: #21ff9b;
-
-      --radius: 20px;
-      --shadow: 0 20px 60px rgba(0,0,0,.55);
+    :root{
+      --bg:#0b0f17;
+      --card:#0f1625;
+      --text:#e7ecf5;
+      --muted:#a8b3c7;
+      --border:rgba(255,255,255,.08);
+      --btn:#121c30;
+      --btnHover:#172444;
+      --focus:#8ab4ff;
     }
 
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      height: 100vh;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(900px 600px at 20% 10%, rgba(124,92,255,.25), transparent 60%),
-        radial-gradient(800px 600px at 80% 30%, rgba(35,213,255,.2), transparent 60%),
-        radial-gradient(800px 600px at 50% 90%, rgba(33,255,155,.12), transparent 60%),
-        linear-gradient(180deg, var(--bg0), var(--bg1));
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Arial,sans-serif;
+      background: radial-gradient(1200px 600px at 20% 0%, rgba(138,180,255,.12), transparent 60%),
+                  radial-gradient(900px 500px at 90% 10%, rgba(255,255,255,.06), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      min-height:100svh;
+      display:grid;
+      place-items:center;
+      padding:24px;
     }
 
-    .panel {
-      width: min(900px, 95%);
-      background: linear-gradient(180deg, rgba(15,22,48,.75), rgba(10,14,28,.55));
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 32px;
+    .wrap{width:min(560px, 100%)}
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.04), transparent 55%), var(--card);
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:22px;
+      box-shadow: 0 12px 40px rgba(0,0,0,.35);
     }
 
-    h1 {
-      margin: 0 0 24px;
-      font-size: clamp(22px, 4vw, 34px);
-      letter-spacing: .4px;
+    h1{
+      margin:0 0 6px;
+      font-size:20px;
+      letter-spacing:.2px;
+    }
+    p{
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.45;
     }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
+    .grid{
+      display:grid;
+      gap:10px;
     }
 
-    @media (max-width: 700px) {
-      .grid { grid-template-columns: 1fr; }
+    .btn{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      width:100%;
+      padding:12px 14px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background:var(--btn);
+      color:var(--text);
+      text-decoration:none;
+      transition: transform .08s ease, background .15s ease, border-color .15s ease;
+      outline:none;
+    }
+    .btn:hover{
+      background:var(--btnHover);
+      border-color:rgba(255,255,255,.14);
+      transform: translateY(-1px);
+    }
+    .btn:active{transform: translateY(0)}
+    .btn:focus-visible{
+      box-shadow:0 0 0 3px rgba(138,180,255,.25);
+      border-color: rgba(138,180,255,.55);
     }
 
-    .card {
-      text-decoration: none;
-      color: var(--text);
-      padding: 22px;
-      border-radius: 18px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      transition: transform .15s ease, border-color .15s ease, background .15s ease;
+    .icon{
+      width:20px;
+      height:20px;
+      flex:0 0 20px;
+      opacity:.95;
     }
 
-    .card:hover {
-      transform: translateY(-3px);
-      border-color: rgba(35,213,255,.45);
-      background: rgba(10,14,28,.75);
+    .label{
+      display:flex;
+      flex-direction:column;
+      gap:2px;
+      text-align:left;
+    }
+    .label strong{
+      font-size:14px;
+      font-weight:600;
+    }
+    .label span{
+      font-size:12px;
+      color:var(--muted);
     }
 
-    .icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 14px;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(135deg, rgba(124,92,255,.35), rgba(35,213,255,.25));
-      border: 1px solid var(--border);
-      box-shadow: 0 0 30px rgba(124,92,255,.15);
-      flex-shrink: 0;
-    }
-
-    .label {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .name {
-      font-size: 18px;
-      font-weight: 800;
-      letter-spacing: .3px;
-    }
-
-    .url {
-      font-size: 13px;
-      color: var(--muted);
-    }
-
-    svg {
-      width: 22px;
-      height: 22px;
-      stroke: white;
-      fill: none;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
+    .footer{
+      margin-top:14px;
+      font-size:12px;
+      color:var(--muted);
+      text-align:center;
     }
   </style>
 </head>
 
 <body>
-  <main class="panel">
-    <h1>Startseite</h1>
+  <div class="wrap">
+    <div class="card">
+      <h1>Tools</h1>
+      <p>Schnelle Links – schlicht, klar, ohne Ablenkung.</p>
 
-    <section class="grid">
-      <a class="card" href="https://www.google.de">
-        <div class="icon">
-          <svg viewBox="0 0 24 24">
-            <path d="M21 12a9 9 0 1 1-3.2-6.9"/>
-            <path d="M21 12h-8"/>
+      <div class="grid">
+        <a class="btn" href="https://www.google.com" target="_blank" rel="noopener">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z" stroke="currentColor" stroke-width="2" />
+            <path d="M16.3 16.3 21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
           </svg>
-        </div>
-        <div class="label">
-          <div class="name">Google</div>
-          <div class="url">google.de</div>
-        </div>
-      </a>
+          <div class="label">
+            <strong>Google</strong>
+            <span>Suche</span>
+          </div>
+        </a>
 
-      <a class="card" href="https://csfloat.com">
-        <div class="icon">
-          <svg viewBox="0 0 24 24">
-            <path d="M7 17c3.5 0 3.5-10 7-10s3.5 10 7 10"/>
-            <path d="M2 12h5"/>
+        <a class="btn" href="https://csfloat.com" target="_blank" rel="noopener">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <!-- Smoke grenade (stylized) -->
+            <path d="M9 7.5h7.5c.8 0 1.5.7 1.5 1.5v2.2c0 .5-.2.9-.6 1.2l-1.4 1v5.1c0 1.1-.9 2-2 2H10c-1.1 0-2-.9-2-2v-5.1l-1.4-1c-.4-.3-.6-.7-.6-1.2V9c0-.8.7-1.5 1.5-1.5Z"
+                  stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M16.5 7.5l1-1.2M14.5 7.5l1-1.2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <!-- smoke puffs -->
+            <path d="M5.5 6.5c.7-.8 1.7-1.2 2.7-1.1M4 9c.6-.6 1.4-.9 2.2-.8" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".9"/>
           </svg>
-        </div>
-        <div class="label">
-          <div class="name">CSFloat</div>
-          <div class="url">csfloat.com</div>
-        </div>
-      </a>
+          <div class="label">
+            <strong>CSFloat</strong>
+            <span>Skins / Market</span>
+          </div>
+        </a>
 
-      <a class="card" href="https://refrag.gg">
-        <div class="icon">
-          <svg viewBox="0 0 24 24">
-            <path d="M12 3v4"/>
-            <path d="M7 8l2.5 2.5"/>
-            <path d="M17 8l-2.5 2.5"/>
-            <path d="M5 13c1.5 4.5 12.5 4.5 14 0"/>
+        <a class="btn" href="https://refrag.gg" target="_blank" rel="noopener">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <!-- AK47 (simple silhouette line icon) -->
+            <path d="M3 11h9l2-2h3l2 2h2v2h-2l-1.2-1.2H14l-1.2 1.2H9v2H6v-2H3v-2Z"
+                  stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M9 13v3l2 2h2v-2l-2-2v-1" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M16 9V7h2v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
           </svg>
-        </div>
-        <div class="label">
-          <div class="name">Refrag</div>
-          <div class="url">refrag.gg</div>
-        </div>
-      </a>
+          <div class="label">
+            <strong>Refrag</strong>
+            <span>Training / Demos</span>
+          </div>
+        </a>
 
-      <a class="card" href="https://xplay.gg">
-        <div class="icon">
-          <svg viewBox="0 0 24 24">
-            <path d="M8 16l8-8"/>
-            <path d="M9.5 7.5h-3v3"/>
-            <path d="M17.5 16.5h-3v-3"/>
+        <a class="btn" href="#" target="_blank" rel="noopener">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <!-- two players/users -->
+            <path d="M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" stroke="currentColor" stroke-width="2"/>
+            <path d="M15 12a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" stroke="currentColor" stroke-width="2" opacity=".9"/>
+            <path d="M3.5 20c.6-3 3-5 5.5-5s4.9 2 5.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M13.5 20c.3-1.9 1.6-3.6 3.5-4.3 1.2-.4 2.4-.3 3.5.2"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".9"/>
           </svg>
-        </div>
-        <div class="label">
-          <div class="name">xplay</div>
-          <div class="url">xplay.gg</div>
-        </div>
-      </a>
-    </section>
-  </main>
+          <div class="label">
+            <strong>Xplay</strong>
+            <span>Retakes / Deathmatch</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="footer">Tipp: Icons sind inline-SVG → schnell, sauber, keine externen Abhängigkeiten.</div>
+    </div>
+  </div>
 </body>
 </html>
