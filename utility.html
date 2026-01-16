@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Utility Lineups</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="utility">
+  <aside class="sidebar">
+    <div class="toggle" onclick="toggleSidebar()">
+      <span class="toggle-text">Maps</span>
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+
+    <nav class="menu">
+      <div class="menu-item active" onclick="showMap('dust2')" data-map="dust2">
+        <img class="icon" src="icons/32px-De_dust2.png" alt="Dust 2">
+        <span>Dust 2</span>
+      </div>
+      <div class="menu-item" onclick="showMap('mirage')" data-map="mirage">
+        <img class="icon" src="icons/32px-De_mirage.png" alt="Mirage">
+        <span>Mirage</span>
+      </div>
+      <div class="menu-item" onclick="showMap('inferno')" data-map="inferno">
+        <img class="icon" src="icons/32px-De_inferno.png" alt="Inferno">
+        <span>Inferno</span>
+      </div>
+      <div class="menu-item disabled" data-map="anubis">
+        <img class="icon" src="icons/32px-De_anubis.png" alt="Anubis">
+        <span>Anubis</span>
+      </div>
+      <div class="menu-item disabled" data-map="ancient">
+        <img class="icon" src="icons/32px-De_ancient.png" alt="Ancient">
+        <span>Ancient</span>
+      </div>
+      <div class="menu-item disabled" data-map="overpass">
+        <img class="icon" src="icons/32px-De_overpass.png" alt="Overpass">
+        <span>Overpass</span>
+      </div>
+      <div class="menu-item disabled" data-map="vertigo">
+        <img class="icon" src="icons/32px-De_vertigo.png" alt="Vertigo">
+        <span>Vertigo</span>
+      </div>
+      <div class="menu-item disabled" data-map="nuke">
+        <img class="icon" src="icons/32px-De_nuke.png" alt="Nuke">
+        <span>Nuke</span>
+      </div>
+    </nav>
+  </aside>
+
+  <aside class="sidebar positions">
+    <div class="toggle" onclick="togglePositions()">
+      <span class="toggle-text">Positionen</span>
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+
+    <nav class="menu" id="positions-menu">
+      <div class="position-group" data-for="dust2">
+        <div class="menu-item" onclick="showPosition('dust2-ct-smoke')" data-position="dust2-ct-smoke">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/>
+            <path d="M8 12h8M12 8v8" stroke="currentColor" stroke-width="2"/>
+          </svg>
+          <span>CT Smoke</span>
+        </div>
+        <div class="menu-item" onclick="showPosition('dust2-b-doors-smoke')" data-position="dust2-b-doors-smoke">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/>
+            <path d="M8 12h8M12 8v8" stroke="currentColor" stroke-width="2"/>
+          </svg>
+          <span>B Doors Smoke</span>
+        </div>
+      </div>
+
+      <div class="position-group" data-for="mirage" style="display:none;">
+        <div class="no-positions">
+          <span>Noch keine Lineups verfügbar</span>
+        </div>
+      </div>
+
+      <div class="position-group" data-for="inferno" style="display:none;">
+        <div class="no-positions">
+          <span>Noch keine Lineups verfügbar</span>
+        </div>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="content">
+    <div class="wrap">
+      <a class="back" href="index.html">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M19 12H5M12 19l-7-7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Zurück
+      </a>
+
+      <div class="map-content active" id="dust2">
+        <div class="position-content active" id="dust2-default">
+          <h1>Dust 2</h1>
+          <p>Wähle eine Position aus dem Menü links</p>
+          <div class="placeholder">
+            <h2>Keine Position ausgewählt</h2>
+            <p>Wähle eine Position aus dem Positionen-Menü</p>
+          </div>
+        </div>
+
+        <div class="position-content" id="dust2-ct-smoke">
+          <h1>Dust 2 - CT Smoke</h1>
+          <p>Smoke für CT Spawn von Long aus</p>
+          
+          <div class="lineup-grid">
+            <div class="lineup-card">
+              <div class="lineup-image">
+                <img src="dust2/ctsmoke1.png" alt="CT Smoke - Standposition">
+              </div>
+              <div class="lineup-info">
+                <h3>1. Standposition</h3>
+                <p>Positioniere dich an dieser Stelle bei Long Doors</p>
+              </div>
+            </div>
+
+            <div class="lineup-card">
+              <div class="lineup-image">
+                <img src="dust2/ctsmoke2.png" alt="CT Smoke - Zielpunkt">
+              </div>
+              <div class="lineup-info">
+                <h3>2. Zielpunkt</h3>
+                <p>Ziele auf diesen Punkt und wirf die Rauchgranate mit Linksklick</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="position-content" id="dust2-b-doors-smoke">
+          <h1>Dust 2 - B Doors Smoke</h1>
+          <p>Smoke für B Doors von Upper Tunnels</p>
+          <div class="placeholder">
+            <h2>B Doors Smoke Lineup</h2>
+            <p>Hier wird das Lineup für B Doors Smoke angezeigt</p>
+            <p>• Positioniere dich in Upper Tunnels<br>
+            • Ziele auf die obere Kante des Fensters<br>
+            • Linksklick + W werfen</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="map-content" id="mirage">
+        <h1>Mirage</h1>
+        <p>Utility Lineups für Mirage</p>
+        <div class="placeholder">
+          <h2>Inhalt folgt bald</h2>
+          <p>Hier werden Lineups für Mirage angezeigt</p>
+        </div>
+      </div>
+
+      <div class="map-content" id="inferno">
+        <h1>Inferno</h1>
+        <p>Utility Lineups für Inferno</p>
+        <div class="placeholder">
+          <h2>Inhalt folgt bald</h2>
+          <p>Hier werden Lineups für Inferno angezeigt</p>
+        </div>
+      </div>
+
+      <div class="map-content" id="anubis">
+        <h1>Anubis</h1>
+        <p>Utility Lineups für Anubis</p>
+        <div class="placeholder">
+          <h2>Inhalt folgt bald</h2>
+          <p>Hier werden Lineups für Anubis angezeigt</p>
+        </div>
+      </div>
+
+      <div class="map-content" id="ancient">
+        <h1>Ancient</h1>
+        <p>Utility Lineups für Ancient</p>
+        <div class="placeholder">
+          <h2>Inhalt folgt bald</h2>
+          <p>Hier werden Lineups für Ancient angezeigt</p>
+        </div>
+      </div>
+
+      <div class="map-content" id="overpass">
+        <h1>Overpass</h1>
+        <p>Utility Lineups für Overpass</p>
+        <div class="placeholder">
+          <h2>Inhalt folgt bald</h2>
+          <p>Hier werden Lineups für Overpass angezeigt</p>
+        </div>
+      </div>
+
+      <div class="map-content" id="vertigo">
+        <h1>Vertigo</h1>
+        <p>Utility Lineups für Vertigo</p>
+        <div class="placeholder">
+          <h2>Inhalt folgt bald</h2>
+          <p>Hier werden Lineups für Vertigo angezeigt</p>
+        </div>
+      </div>
+
+      <div class="map-content" id="nuke">
+        <h1>Nuke</h1>
+        <p>Utility Lineups für Nuke</p>
+        <div class="placeholder">
+          <h2>Inhalt folgt bald</h2>
+          <p>Hier werden Lineups für Nuke angezeigt</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="utility.js"></script>
+</body>
+</html>
