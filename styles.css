@@ -172,6 +172,44 @@ body.home p{
   gap:12px;
 }
 
+.search{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  width:100%;
+  padding:14px 16px;
+  margin-bottom:12px;
+  border-radius:14px;
+  border:1px solid var(--border);
+  background: linear-gradient(135deg, rgba(255,255,255,.03), transparent 70%), var(--btn);
+  transition: background .15s ease, border-color .15s ease, box-shadow .15s ease;
+}
+
+.search:hover{
+  background: linear-gradient(135deg, rgba(255,255,255,.05), transparent 70%), var(--btnHover);
+  border-color:rgba(255,255,255,.2);
+}
+
+.search:focus-within{
+  box-shadow:0 0 0 3px rgba(106,159,255,.25);
+  border-color: var(--accent);
+}
+
+.search input{
+  flex:1;
+  min-width:0;
+  border:0;
+  background:transparent;
+  color:var(--text);
+  font:inherit;
+  font-size:15px;
+  outline:none;
+}
+
+.search input::placeholder{
+  color:var(--muted);
+}
+
 body.utility{
   padding:40px 32px;
   display:flex;
