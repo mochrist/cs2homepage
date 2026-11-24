@@ -174,6 +174,65 @@ p{
   letter-spacing:.4px;
 }
 
+/* ---------- Geteilter Button (schräger "/"-Schnitt, Hover-Seite wächst auf 70%) ---------- */
+
+.split{
+  --slant:22px;   /* horizontale Breite der Schräge */
+  --cut:4px;      /* Breite des sichtbaren Spalts */
+  display:flex;
+}
+
+.split .btn{
+  flex:1 1 0;
+  min-width:0;
+  transition:flex-grow .35s cubic-bezier(.4,0,.2,1), background .15s ease, border-color .15s ease;
+}
+
+.split .btn:hover,
+.split .btn:active{
+  transform:none;
+}
+
+/* links: rechte Kante läuft von oben-rechts nach unten-links ("/") */
+.split .split-main{
+  padding-right:calc(18px + var(--slant));
+  clip-path:polygon(0 0, 100% 0, calc(100% - var(--slant)) 100%, var(--notch) 100%, 0 calc(100% - var(--notch)));
+}
+
+/* rechts: linke Kante parallel dazu, überlappt bis auf den Spalt */
+.split .split-side{
+  margin-left:calc(var(--cut) - var(--slant));
+  padding-left:calc(18px + var(--slant));
+  clip-path:polygon(var(--slant) 0, calc(100% - var(--notch)) 0, 100% var(--notch), 100% 100%, 0 100%);
+}
+
+/* Akzentbalken rechts statt links, da die linke Kante schräg ist */
+.split .split-side::before{
+  left:auto;
+  right:0;
+}
+
+.split .split-main:hover,
+.split .split-side:hover{
+  flex-grow:7;
+}
+
+.split:has(.split-main:hover) .split-side,
+.split:has(.split-side:hover) .split-main{
+  flex-grow:3;
+}
+
+.split .label{
+  min-width:0;
+}
+
+.split .label strong,
+.split .label span{
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
 /* ---------- Suchzeile ---------- */
 
 .search{
